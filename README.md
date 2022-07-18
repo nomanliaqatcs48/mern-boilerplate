@@ -1,1 +1,1 @@
-# InvoPlate---MERN
+# InvoPlate-MERN
