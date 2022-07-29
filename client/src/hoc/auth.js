@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { auth } from "../_actions/user_actions";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { auth } from '../_actions/user_actions';
 
 export default function (SpecificComponent, option, adminRoute = null) {
   function AuthenticationCheck(props) {
@@ -14,18 +14,18 @@ export default function (SpecificComponent, option, adminRoute = null) {
         // Not Loggined in Status
         if (!response.payload.isAuth) {
           if (option) {
-            props.history.push("/login");
+            props.history.push('/login');
           }
           // Loggined in Status
         } else {
           // supposed to be Admin page, but not admin person wants to go inside
           // eslint-disable-next-line
           if (adminRoute && !response.payload.isAdmin) {
-            props.history.push("/");
+            props.history.push('/');
           }
           // Logged in Status, but Try to go into log in page
           else if (option === false) {
-            props.history.push("/");
+            props.history.push('/');
           }
         }
       });

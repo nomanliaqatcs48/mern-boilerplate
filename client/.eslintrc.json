@@ -16,7 +16,6 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:import/typescript",
     "prettier"
-    // ,"react-app"
   ],
   "plugins": ["@typescript-eslint", "react-hooks", "prettier"],
   "ignorePatterns": [
@@ -45,7 +44,6 @@
     "react/self-closing-comp": "off",
     "react/prop-types": "off",
     "react/jsx-one-expression-per-line": "off",
-    "global-require": "off",
     "react/destructuring-assignment": "off",
     "react/display-name": "off",
     "no-empty": "off",
@@ -66,7 +64,7 @@
     "no-continue": "off",
     "no-nested-ternary": "off",
     "@typescript-eslint/no-empty-function": "off",
-    // "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-unused-vars": "error",
     "react/state-in-constructor": "off",
     "react/jsx-no-bind": "off",
     "import/no-extraneous-dependencies": "off",
@@ -77,11 +75,8 @@
     "import/prefer-default-export": "off",
     "react/forbid-prop-types": "off",
     "react/require-default-props": "off",
-
     "jsx-a11y/label-has-associated-control": "off",
     "react/jsx-pascal-case": "off",
-
-    "no-alert": "off",
     "react/no-array-index-key": "off",
     "import/no-unresolved": "off",
     "import/no-named-as-default": "off",
@@ -92,21 +87,17 @@
     "react/no-unescaped-entities": "off",
     "react/jsx-closing-tag-location": "off",
     "jsx-a11y/alt-text": "off",
-    "no-unused-expressions": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
-    "no-return-await": "off",
     "react/no-access-state-in-setstate": "off",
     "react/no-danger": "off",
     "no-constant-condition": "off",
     "@typescript-eslint/class-name-casing": "off",
-    "no-cond-assign": "off",
-    "no-undef": "off",
     "no-irregular-whitespace": "off",
     "require-yield": "off",
     "prettier/prettier": [
       "error",
       {
-        "singleQuote": false
+        "singleQuote": true
       }
     ],
     "react/button-has-type": "off",

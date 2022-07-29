@@ -3,7 +3,7 @@ import {
   REGISTER_USER,
   AUTH_USER,
   LOGOUT_USER,
-} from "../_actions/types";
+} from '../_actions/types';
 // eslint-disable-next-line
 export default function (state = {}, action) {
   switch (action.type) {

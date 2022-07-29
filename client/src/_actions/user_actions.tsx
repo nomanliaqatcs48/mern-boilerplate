@@ -1,6 +1,6 @@
-import axios from "axios";
-import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER } from "./types";
-import { USER_SERVER } from "../components/Config.js";
+import axios from 'axios';
+import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER } from './types';
+import { USER_SERVER } from '../components/Config.js';
 
 export const registerUser: any = (dataToSubmit: any) => {
   const request = axios

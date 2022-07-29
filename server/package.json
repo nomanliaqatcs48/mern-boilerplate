@@ -4,15 +4,15 @@
   "description": "react boiler plate",
   "main": "index.js",
   "engine": {
-    "node": "10.16.0",
-    "npm": "6.9.0"
+    "node": "^10.16.0",
+    "npm": "^6.9.0"
   },
   "scripts": {
     "start": "nodemon public/index.js",
     "dev": "concurrently \"tsc -w\" \"npm start\" ",
     "autofix": "npx eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
-  "author": "John ahn",
+  "author": "InvoZone",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",

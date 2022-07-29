@@ -1,11 +1,11 @@
-import React from "react";
-import moment from "moment";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import moment from 'moment';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
 
-import { Form, Input, Button } from "antd";
-import { registerUser } from "../../../_actions/user_actions";
+import { Form, Input, Button } from 'antd';
+import { registerUser } from '../../../_actions/user_actions';
 
 const formItemLayout = {
   labelCol: {
@@ -35,24 +35,24 @@ function RegisterPage(props) {
   return (
     <Formik
       initialValues={{
-        email: "",
-        lastName: "",
-        name: "",
-        password: "",
-        confirmPassword: "",
+        email: '',
+        lastName: '',
+        name: '',
+        password: '',
+        confirmPassword: '',
       }}
       validationSchema={Yup.object().shape({
-        name: Yup.string().required("Name is required"),
-        lastName: Yup.string().required("Last Name is required"),
+        name: Yup.string().required('Name is required'),
+        lastName: Yup.string().required('Last Name is required'),
         email: Yup.string()
-          .email("Email is invalid")
-          .required("Email is required"),
+          .email('Email is invalid')
+          .required('Email is required'),
         password: Yup.string()
-          .min(6, "Password must be at least 6 characters")
-          .required("Password is required"),
+          .min(6, 'Password must be at least 6 characters')
+          .required('Password is required'),
         confirmPassword: Yup.string()
-          .oneOf([Yup.ref("password"), null], "Passwords must match")
-          .required("Confirm Password is required"),
+          .oneOf([Yup.ref('password'), null], 'Passwords must match')
+          .required('Confirm Password is required'),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -66,7 +66,7 @@ function RegisterPage(props) {
 
           dispatch(registerUser(dataToSubmit)).then((response) => {
             if (response.payload.success) {
-              props.history.push("/login");
+              props.history.push('/login');
             } else {
               alert(response.payload.err.errmsg);
             }
@@ -92,7 +92,7 @@ function RegisterPage(props) {
           <div className="app">
             <h2>Sign up</h2>
             <Form
-              style={{ minWidth: "375px" }}
+              style={{ minWidth: '375px' }}
               {...formItemLayout}
               onSubmit={handleSubmit}
             >
@@ -106,8 +106,8 @@ function RegisterPage(props) {
                   onBlur={handleBlur}
                   className={
                     errors.name && touched.name
-                      ? "text-input error"
-                      : "text-input"
+                      ? 'text-input error'
+                      : 'text-input'
                   }
                 />
                 {errors.name && touched.name && (
@@ -125,8 +125,8 @@ function RegisterPage(props) {
                   onBlur={handleBlur}
                   className={
                     errors.lastName && touched.lastName
-                      ? "text-input error"
-                      : "text-input"
+                      ? 'text-input error'
+                      : 'text-input'
                   }
                 />
                 {errors.lastName && touched.lastName && (
@@ -139,7 +139,7 @@ function RegisterPage(props) {
                 label="Email"
                 hasFeedback
                 validateStatus={
-                  errors.email && touched.email ? "error" : "success"
+                  errors.email && touched.email ? 'error' : 'success'
                 }
               >
                 <Input
@@ -151,8 +151,8 @@ function RegisterPage(props) {
                   onBlur={handleBlur}
                   className={
                     errors.email && touched.email
-                      ? "text-input error"
-                      : "text-input"
+                      ? 'text-input error'
+                      : 'text-input'
                   }
                 />
                 {errors.email && touched.email && (
@@ -165,7 +165,7 @@ function RegisterPage(props) {
                 label="Password"
                 hasFeedback
                 validateStatus={
-                  errors.password && touched.password ? "error" : "success"
+                  errors.password && touched.password ? 'error' : 'success'
                 }
               >
                 <Input
@@ -177,8 +177,8 @@ function RegisterPage(props) {
                   onBlur={handleBlur}
                   className={
                     errors.password && touched.password
-                      ? "text-input error"
-                      : "text-input"
+                      ? 'text-input error'
+                      : 'text-input'
                   }
                 />
                 {errors.password && touched.password && (
@@ -196,8 +196,8 @@ function RegisterPage(props) {
                   onBlur={handleBlur}
                   className={
                     errors.confirmPassword && touched.confirmPassword
-                      ? "text-input error"
-                      : "text-input"
+                      ? 'text-input error'
+                      : 'text-input'
                   }
                 />
                 {errors.confirmPassword && touched.confirmPassword && (
