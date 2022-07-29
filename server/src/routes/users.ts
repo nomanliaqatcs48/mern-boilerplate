@@ -1,56 +1,74 @@
-const router = require('express').Router();
-const { User: UserModal } = require('../models/User')
+// @ts-ignore
+const express = require("express");
+const router = express.Router();
+// @ts-ignore
+const { User } = require("../models/User");
+// @ts-ignore
+const { auth } = require("../middleware/auth");
 
-router.get("/auth", (req: any, res: any) => {
+//=================================
+//             User
+//=================================
 
-    res.send('/auth')
-    
+router.get("/auth", auth, (req: any, res: any) => {
+  res.status(200).json({
+    _id: req.user._id,
+    isAdmin: req.user.role === 0 ? false : true,
+    isAuth: true,
+    email: req.user.email,
+    name: req.user.name,
+    lastname: req.user.lastname,
+    role: req.user.role,
+    image: req.user.image,
+  });
 });
 
-router.post("/create", async (req: any, res: any) => {
+router.post("/register", (req: any, res: any) => {
+  const user = new User(req.body);
 
-    const { body } = req;
-    
-    let user: Object = {
-        "name": body.name,
-        "email": body.email,
-        "password": body.password,
-        "lastname": body.lastname,
-        "role" : body.role,
-        "image": body.image,
-        "token" : body.token,
-        "tokenExp" : body.tokenExp  
-    }
-
-    UserModal.create(user).then((createdUser: any) => {
-        res.send(createdUser)
-    })
-    .catch((error: Error) => {
-        res.send('Not Send Due To....\n\n' + error)
-    })
-
+  user.save((err: Error, doc: any) => {
+    if (err) return res.json({ success: false, err });
+    return res.status(200).json({
+      success: true,
+    });
+  });
 });
-
-router.get('/test', (req: any, res: any) => {
-
-    res.send(`
-
-        <h1>Welcome to the API!</h1>
-        <code style='background-color: #d4d4d4; padding: 4px'>/login for login details</code>
-        <br/><br/>
-        <code style='background-color: #d4d4d4; padding: 4px'>/logout for logout details</code>
-    
-    `)
-
-})
 
 router.post("/login", (req: any, res: any) => {
-    res.send(200)
+  User.findOne({ email: req.body.email }, (err: Error, user: any) => {
+    if (!user)
+      return res.json({
+        loginSuccess: false,
+        message: "Auth failed, email not found",
+      });
+
+    user.comparePassword(req.body.password, (err: Error, isMatch: any) => {
+      if (!isMatch)
+        return res.json({ loginSuccess: false, message: "Wrong password" });
+
+      user.generateToken((err: Error, user: any) => {
+        if (err) return res.status(400).send(err);
+        res.cookie("w_authExp", user.tokenExp);
+        res.cookie("w_auth", user.token).status(200).json({
+          loginSuccess: true,
+          userId: user._id,
+        });
+      });
+    });
+  });
 });
 
-router.get("/logout", (req: any, res: any) => {
-
-    res.send(200)
+router.get("/logout", auth, (req: any, res: any) => {
+  User.findOneAndUpdate(
+    { _id: req.user._id },
+    { token: "", tokenExp: "" },
+    (err: Error, doc: any) => {
+      if (err) return res.json({ success: false, err });
+      return res.status(200).send({
+        success: true,
+      });
+    }
+  );
 });
 
 module.exports = router;

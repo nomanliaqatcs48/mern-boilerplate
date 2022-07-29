@@ -1,13 +1,29 @@
+// @ts-ignore
 const express = require("express");
 const app = express();
 const path = require("path");
 const cors = require("cors");
 require("dotenv").config();
 
-const database = require("./config/database");
-
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+
+// const mongoose = require("mongoose");
+// mongoose
+//   .connect(config.mongoURI, { useNewUrlParser: true })
+//   .then(() => console.log("DB connected"))
+//   .catch(err => console.error(err));
+
+const mongoose = require("mongoose");
+const connect = mongoose
+  .connect(process.env.MONGO_CLOUD_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log("MongoDB Connected..."))
+  .catch((err: Error) => console.log(err));
 
 app.use(cors());
 

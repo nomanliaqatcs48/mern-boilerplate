@@ -1,51 +1,65 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
+// @ts-ignore
+const express = require("express");
+const router = express.Router();
+// @ts-ignore
+const { User } = require("../models/User");
+// @ts-ignore
+const { auth } = require("../middleware/auth");
+//=================================
+//             User
+//=================================
+router.get("/auth", auth, (req, res) => {
+    res.status(200).json({
+        _id: req.user._id,
+        isAdmin: req.user.role === 0 ? false : true,
+        isAuth: true,
+        email: req.user.email,
+        name: req.user.name,
+        lastname: req.user.lastname,
+        role: req.user.role,
+        image: req.user.image,
     });
-};
-const router = require('express').Router();
-const { User: UserModal } = require('../models/User');
-router.get("/auth", (req, res) => {
-    res.send('/auth');
 });
-router.post("/create", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { body } = req;
-    let user = {
-        "name": body.name,
-        "email": body.email,
-        "password": body.password,
-        "lastname": body.lastname,
-        "role": body.role,
-        "image": body.image,
-        "token": body.token,
-        "tokenExp": body.tokenExp
-    };
-    UserModal.create(user).then((createdUser) => {
-        res.send(createdUser);
-    })
-        .catch((error) => {
-        res.send('Not Send Due To....\n\n' + error);
+router.post("/register", (req, res) => {
+    const user = new User(req.body);
+    user.save((err, doc) => {
+        if (err)
+            return res.json({ success: false, err });
+        return res.status(200).json({
+            success: true,
+        });
     });
-}));
-router.get('/test', (req, res) => {
-    res.send(`
-
-        <h1>Welcome to the API!</h1>
-        <code style='background-color: #d4d4d4; padding: 4px'>/login for login details</code>
-        <br/><br/>
-        <code style='background-color: #d4d4d4; padding: 4px'>/logout for logout details</code>
-    
-    `);
 });
 router.post("/login", (req, res) => {
-    res.send(200);
+    User.findOne({ email: req.body.email }, (err, user) => {
+        if (!user)
+            return res.json({
+                loginSuccess: false,
+                message: "Auth failed, email not found",
+            });
+        user.comparePassword(req.body.password, (err, isMatch) => {
+            if (!isMatch)
+                return res.json({ loginSuccess: false, message: "Wrong password" });
+            user.generateToken((err, user) => {
+                if (err)
+                    return res.status(400).send(err);
+                res.cookie("w_authExp", user.tokenExp);
+                res.cookie("w_auth", user.token).status(200).json({
+                    loginSuccess: true,
+                    userId: user._id,
+                });
+            });
+        });
+    });
 });
-router.get("/logout", (req, res) => {
-    res.send(200);
+router.get("/logout", auth, (req, res) => {
+    User.findOneAndUpdate({ _id: req.user._id }, { token: "", tokenExp: "" }, (err, doc) => {
+        if (err)
+            return res.json({ success: false, err });
+        return res.status(200).send({
+            success: true,
+        });
+    });
 });
 module.exports = router;
