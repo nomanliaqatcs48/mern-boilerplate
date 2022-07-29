@@ -2,7 +2,7 @@ import axios from 'axios';
 import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER } from './types';
 import { USER_SERVER } from '../components/Config.js';
 
-export function registerUser(dataToSubmit) {
+export const registerUser: any = (dataToSubmit: any) => {
   const request = axios
     .post(`${USER_SERVER}/register`, dataToSubmit)
     .then((response) => response.data);
@@ -11,9 +11,9 @@ export function registerUser(dataToSubmit) {
     type: REGISTER_USER,
     payload: request,
   };
-}
+};
 
-export function loginUser(dataToSubmit) {
+export const loginUser: any = (dataToSubmit: any) => {
   const request = axios
     .post(`${USER_SERVER}/login`, dataToSubmit)
     .then((response) => response.data);
@@ -22,9 +22,9 @@ export function loginUser(dataToSubmit) {
     type: LOGIN_USER,
     payload: request,
   };
-}
+};
 
-export function auth() {
+export const auth: any = () => {
   const request = axios
     .get(`${USER_SERVER}/auth`)
     .then((response) => response.data);
@@ -33,9 +33,9 @@ export function auth() {
     type: AUTH_USER,
     payload: request,
   };
-}
+};
 
-export function logoutUser() {
+export const logoutUser: any = () => {
   const request = axios
     .get(`${USER_SERVER}/logout`)
     .then((response) => response.data);
@@ -44,4 +44,4 @@ export function logoutUser() {
     type: LOGOUT_USER,
     payload: request,
   };
-}
+};
