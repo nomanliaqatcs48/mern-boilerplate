@@ -14,8 +14,7 @@
     "airbnb",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/typescript",
-    "prettier"
+    "plugin:import/typescript"
   ],
   "plugins": ["@typescript-eslint", "react-hooks", "prettier"],
   "ignorePatterns": [
@@ -33,6 +32,15 @@
         "allowTypedFunctionExpressions": true
       }
     ],
+    "strict": "off",
+    "object-curly-newline": "off",
+    "brace-style": "off",
+    "operator-linebreak": "off",
+    "indent": "off",
+    "comma-dangle": "off",
+    "nonblock-statement-body-position": "off",
+    "import/newline-after-import": "off",
+    "lines-around-directive": "off",
     "@typescript-eslint/consistent-type-assertions": ["off"],
     "@typescript-eslint/no-this-alias": ["off"],
     "import/extensions": "off",
@@ -100,6 +108,7 @@
         "singleQuote": true
       }
     ],
+    "jsx-quotes": "off",
     "react/button-has-type": "off",
     "jsx-a11y/no-noninteractive-tabindex": "off",
     "@typescript-eslint/ban-types": "off",

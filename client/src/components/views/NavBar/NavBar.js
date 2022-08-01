@@ -17,36 +17,36 @@ function NavBar() {
 
   return (
     <nav
-      className="menu"
+      className='menu'
       style={{ position: 'fixed', zIndex: 5, width: '100%' }}
     >
-      <div className="menu__logo">
-        <a href="/">Logo</a>
+      <div className='menu__logo'>
+        <a href='/'>Logo</a>
       </div>
-      <div className="menu__container">
-        <div className="menu_left">
-          <LeftMenu mode="horizontal" />
+      <div className='menu__container'>
+        <div className='menu_left'>
+          <LeftMenu mode='horizontal' />
         </div>
-        <div className="menu_rigth">
-          <RightMenu mode="horizontal" />
+        <div className='menu_rigth'>
+          <RightMenu mode='horizontal' />
         </div>
         <Button
-          className="menu__mobile-button"
-          type="primary"
+          className='menu__mobile-button'
+          type='primary'
           onClick={showDrawer}
         >
-          <Icon type="align-right" />
+          <Icon type='align-right' />
         </Button>
         <Drawer
-          title="Basic Drawer"
-          placement="right"
-          className="menu_drawer"
+          title='Basic Drawer'
+          placement='right'
+          className='menu_drawer'
           closable={false}
           onClose={onClose}
           visible={visible}
         >
-          <LeftMenu mode="inline" />
-          <RightMenu mode="inline" />
+          <LeftMenu mode='inline' />
+          <RightMenu mode='inline' />
         </Drawer>
       </div>
     </nav>

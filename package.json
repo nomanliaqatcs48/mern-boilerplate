@@ -1,0 +1,33 @@
+{
+  "name": "invoplate-mern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "build": "npm run --prefix server build",
+    "check-types": "npm run _sg && npm run --prefix server check-types && npm run _cg && npm run --prefix client check-types",
+    "check-format": "npm run _sg && npm run --prefix server check-format && npm run _cg && npm run --prefix client check-format",
+    "check-lint": "npm run _sg && npm run --prefix server check-lint && npm run _cg && npm run --prefix client check-lint",
+    "check-complexity": "npm run _sg && npm run --prefix server check-complexity",
+    "format": "npm run _sg && npm run --prefix server format && npm run _cg && npm run --prefix client format",
+    "test-all": "npm run --prefix server test-all && npm run --prefix client test-all",
+    "_cg": "echo Checking For Client Side! 🖥️ 🛠",
+    "_sg": "echo Checking For Server Side! 🧰 🛠"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InvoZone/InvoPlate-MERN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/InvoZone/InvoPlate-MERN/issues"
+  },
+  "homepage": "https://github.com/InvoZone/InvoPlate-MERN#readme",
+  "devDependencies": {
+    "husky": "^8.0.0"
+  }
+}

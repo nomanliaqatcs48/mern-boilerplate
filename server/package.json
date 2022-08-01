@@ -10,7 +10,16 @@
   "scripts": {
     "start": "nodemon public/index.js",
     "dev": "concurrently \"tsc -w\" \"npm start\" ",
-    "autofix": "npx eslint . --ext .js,.jsx,.ts,.tsx --fix"
+    "build": "tsc",
+    "autofix": "npx eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "complexity": "cr public",
+    "prepare": "husky install",
+    "check-types": "tsc --pretty --noEmit",
+    "check-format": "prettier --check .",
+    "check-lint": "eslint . --ext ts --ext tsx --ext js --fix",
+    "check-complexity": "cr public",
+    "format": "prettier --write .",
+    "test-all": "npm run check-format && npm run check-lint && npm run check-types && npm run build"
   },
   "author": "InvoZone",
   "license": "ISC",
@@ -21,7 +30,6 @@
     "cors": "^2.8.5",
     "debug": "^4.1.1",
     "dotenv": "^16.0.1",
-    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
@@ -36,12 +44,21 @@
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "concurrently": "^4.1.0",
-    "eslint": "^8.20.0",
+    "eslint": "^8.21.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.1",
     "nodemon": "^1.19.1",
     "prettier": "^2.7.1",
     "typescript": "^4.7.4"
-  }
+  },
+  "keywords": []
 }
