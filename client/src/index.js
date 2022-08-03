@@ -33,7 +33,7 @@ const __setModuleDefault =
   (Object.create
     ? function (o, v) {
         // eslint-disable-next-line
-        Object.defineProperty(o, "default", { enumerable: true, value: v });
+        Object.defineProperty(o, 'default', { enumerable: true, value: v });
       }
     : function (o, v) {
         // eslint-disable-next-line
@@ -44,10 +44,13 @@ const __importStar =
   function (mod) {
     if (mod && mod.__esModule) return mod;
     const result = {};
-    if (mod != null)
-      for (const k in mod)
-        if (k !== 'default' && Object.prototype.hasOwnProperty.call(mod, k))
+    if (mod != null) {
+      for (const k in mod) {
+        if (k !== 'default' && Object.prototype.hasOwnProperty.call(mod, k)) {
           __createBinding(result, mod, k);
+        }
+      }
+    }
     __setModuleDefault(result, mod);
     return result;
   };
@@ -61,7 +64,7 @@ require('react-app-polyfill/ie9');
 require('react-app-polyfill/ie11');
 require('core-js');
 // eslint-disable-next-line
-const react_1 = __importDefault(require("react"));
+const react_1 = __importDefault(require('react'));
 const react_dom_1 = __importDefault(require('react-dom'));
 require('./index.css');
 const App_1 = __importDefault(require('./components/App'));

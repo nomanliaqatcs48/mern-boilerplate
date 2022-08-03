@@ -1,12 +1,13 @@
 // @ts-ignore
-const express = require("express");
-const app = express();
-const path = require("path");
-const cors = require("cors");
-require("dotenv").config();
+const express = require('express');
 
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
+const app = express();
+const path = require('path');
+const cors = require('cors');
+require('dotenv').config();
+
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 // const mongoose = require("mongoose");
 // mongoose
@@ -14,42 +15,46 @@ const cookieParser = require("cookie-parser");
 //   .then(() => console.log("DB connected"))
 //   .catch(err => console.error(err));
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+
 const connect = mongoose
-  .connect(process.env.MONGO_CLOUD_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
-  .then(() => console.log("MongoDB Connected..."))
+  .connect(
+    'mongodb+srv://Mongo2099:futureman2099@cluster0.inxix.mongodb.net/Memos?retryWrites=true&w=majority',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    }
+  )
+  .then(() => console.log('MongoDB Connected...'))
   .catch((err: Error) => console.log(err));
 
 app.use(cors());
 
-//to not get any deprecation warning or error
-//support parsing of application/x-www-form-urlencoded post data
+// to not get any deprecation warning or error
+// support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
-//to get json data
+// to get json data
 // support parsing of application/json type post data
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use("/api/users", require("./routes/users"));
+app.use('/api/users', require('./routes/users'));
 
-//use this to show the image you have in node js server to client (react js)
-//https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
-app.use("/uploads", express.static("uploads"));
+// use this to show the image you have in node js server to client (react js)
+// https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
+app.use('/uploads', express.static('uploads'));
 
 // Serve static assets if in production
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
   // Set static folder
   // All the javascript and css files will be read and served from this folder
-  app.use(express.static("client/build"));
+  app.use(express.static('client/build'));
 
   // index.html for all page routes    html or routing and naviagtion
-  app.get("*", (req: any, res: any) => {
-    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+  app.get('*', (req: any, res: any) => {
+    res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
   });
 }
 

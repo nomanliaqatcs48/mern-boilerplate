@@ -81,17 +81,17 @@ function LoginPage(props) {
           // handleReset,
         } = props;
         return (
-          <div className="app">
+          <div className='app'>
             <Title level={2}>Log In</Title>
             <form onSubmit={handleSubmit} style={{ width: '350px' }}>
               <Form.Item required>
                 <Input
-                  id="email"
+                  id='email'
                   prefix={
-                    <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
+                    <Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />
                   }
-                  placeholder="Enter your email"
-                  type="email"
+                  placeholder='Enter your email'
+                  type='email'
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -102,18 +102,18 @@ function LoginPage(props) {
                   }
                 />
                 {errors.email && touched.email && (
-                  <div className="input-feedback">{errors.email}</div>
+                  <div className='input-feedback'>{errors.email}</div>
                 )}
               </Form.Item>
 
               <Form.Item required>
                 <Input
-                  id="password"
+                  id='password'
                   prefix={
-                    <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
+                    <Icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />
                   }
-                  placeholder="Enter your password"
-                  type="password"
+                  placeholder='Enter your password'
+                  type='password'
                   value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -124,7 +124,7 @@ function LoginPage(props) {
                   }
                 />
                 {errors.password && touched.password && (
-                  <div className="input-feedback">{errors.password}</div>
+                  <div className='input-feedback'>{errors.password}</div>
                 )}
               </Form.Item>
 
@@ -146,24 +146,24 @@ function LoginPage(props) {
 
               <Form.Item>
                 <Checkbox
-                  id="rememberMe"
+                  id='rememberMe'
                   onChange={handleRememberMe}
                   checked={rememberMe}
                 >
                   Remember me
                 </Checkbox>
                 <a
-                  className="login-form-forgot"
-                  href="/reset_user"
+                  className='login-form-forgot'
+                  href='/reset_user'
                   style={{ float: 'right' }}
                 >
                   forgot password
                 </a>
                 <div>
                   <Button
-                    type="primary"
-                    htmlType="submit"
-                    className="login-form-button"
+                    type='primary'
+                    htmlType='submit'
+                    className='login-form-button'
                     style={{ minWidth: '100%' }}
                     disabled={isSubmitting}
                     onSubmit={handleSubmit}
@@ -171,7 +171,7 @@ function LoginPage(props) {
                     Log in
                   </Button>
                 </div>
-                Or <a href="/register">register now!</a>
+                Or <a href='/register'>register now!</a>
               </Form.Item>
             </form>
           </div>
