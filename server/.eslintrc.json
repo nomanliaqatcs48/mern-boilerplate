@@ -38,5 +38,9 @@
         "singleQuote": true
       }
     ]
+  },
+  "globals": {
+    "describe": false,
+    "it": false
   }
 }

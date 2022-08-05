@@ -45,9 +45,24 @@
     "@typescript-eslint/no-this-alias": ["off"],
     "import/extensions": "off",
     "import/no-cycle": "off",
-    "new-cap": "off",
-    "react/jsx-curly-brace-presence": "off",
+    "new-cap": "error",
+    "react/jsx-curly-brace-presence": "error",
 
+    "import/prefer-default-export": "error",
+    "react/no-unescaped-entities": "off",
+    "react/destructuring-assignment": "off",
+    "no-shadow": "off",
+    "no-console": "off",
+    "react/jsx-props-no-spreading": "off",
+    "func-names": "off",
+    "no-underscore-dangle": "off",
+    "react/jsx-pascal-case": "off",
+    "import/no-extraneous-dependencies": "off",
+
+    "no-restricted-syntax": "error",
+    "jsx-a11y/anchor-is-valid": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "react/self-closing-comp": "off",
@@ -87,5 +102,9 @@
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
+  },
+  "globals": {
+    "test": false,
+    "expect": false
   }
 }
