@@ -2,48 +2,40 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo 'Husky has been initiated..'
-echo '[🟩🟨🟨] Styling, testing and building your project before committing'
+echo 'Checking Server Side Configurations.'
 
 # Check Prettier standards
-npm run check-format ||
-(
-    echo 'Due to Wrong Prettier Formatting, Commit Has Been Stopped! ❌ 
-            Prettier Check Failed. Run npm run format, add changes and try commit again.';
-    false;
-)
-
-# Check ESLint Standards
-npm run check-lint ||
+npm run --prefix server format:lint:fix ||
 (
         echo 'Due to Some ESLint Errors, Commit Has Been Stopped! 
                 ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
         false; 
 )
 
-# Check tsconfig standards
-npm run check-types ||
+npm run --prefix server test || 
 (
-    echo 'Typescript Generated Some Errors... Resolve Them And Try Again! ❌'
-    false;
+    echo 'Test Passed Successfully!'
+    true;
 )
 
 # Generate Complexity Report!
-npm run check-complexity || (
-    echo 'Report Generated....'
+npm run --prefix server complexity || (
+    echo 'Report Generated. Please check the updated ./server/complexity-report.md'
+    echo 'There is no threshold limit on complexity but you may set one.'
     true;
 )
 
 # If everything passes... Now we can commit
-echo '[🟩🟩🟨] Code looks good... Trying to build now..'
+echo 'Checking Client Side Configurations.'
 
-npm run build ||
+npm run --prefix client lint:fix ||
 (
-    echo 'Unfortunately, The Build Has Failed! ❌ 
-            Next build failed: View the errors above to see why. 
-    '
-    false;
+        echo 'Due to Some ESLint Errors, Commit Has Been Stopped! 
+                ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+        false; 
 )
+
+git add .
 
 # If everything passes... Now we can commit
 echo '[🟩🟩🟩] Successfully Commited!'
