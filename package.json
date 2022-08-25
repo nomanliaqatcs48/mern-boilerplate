@@ -7,7 +7,8 @@
     "setup": "find . -maxdepth 1 -type d \\( ! -name . \\) -exec bash -c \"cd '{}' && npm ci\" \\;",
     "client": "cd client && npm run start && cd ..",
     "server": "cd server && npm run develop && cd ..",
-    "admin": ""
+    "admin": "",
+    "cronjob": "cd server/cron && node cronjob"
   },
   "repository": {
     "type": "git",
