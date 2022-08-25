@@ -37,6 +37,7 @@ To Check and validate this, we have complexity report that is being checked and 
 - Type `npm run setup` to install all packages for client, server, and admin
 - Type `npm run client` to start client side in development mode @ localhost:3000
 - Type `npm run server` to start server side in development mode @ localhost:8000
+- Type `npm run cronjob` to start server side cronjob independently
 
 ## <u>Enviornment Variables</u>
 Initialise `.envs` in the respective directories `(./client)` and make sure to copy `.env.example` for all the required variables. If you add a new variable at any time, make sure to add it in the `.env.example` with a dummy value.
