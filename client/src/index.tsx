@@ -15,6 +15,7 @@ import ReduxThunk from 'redux-thunk';
 import Reducer from './_reducers';
 import * as serviceWorker from './serviceWorker';
 import App from './components/App';
+import HandleError from './_errors/error';
 
 const createStoreWithMiddleware = applyMiddleware(
   promiseMiddleware,
@@ -25,6 +26,7 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(Reducer)}>
     <BrowserRouter>
       <App />
+      <HandleError />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')
