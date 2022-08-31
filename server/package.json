@@ -18,7 +18,8 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "morgan": "~1.9.1",
-    "node-cron": "^3.0.2"
+    "node-cron": "^3.0.2",
+    "proper-lockfile": "^4.1.2"
   },
   "devDependencies": {
     "chai": "^4.3.6",
