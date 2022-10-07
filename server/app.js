@@ -1,13 +1,16 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const auth = require('@invozone/nodejs-jwt-auth/app');
 const requestLogs = require('./middleware/request');
 
 const exampleMiddleware = require('./middleware/example');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const adminRouter = require('./routes/admin');
 
 const corsOptions = {
   origin: process.env.CORS_ORIGIN || '*',
@@ -24,7 +27,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/admin/uploads', express.static(`${__dirname}/admin/uploads/`));
 app.use('/', indexRouter);
+app.use('/auth', auth);
 app.use('/users', usersRouter);
+app.use('/admin', adminRouter);
 
 module.exports = app;

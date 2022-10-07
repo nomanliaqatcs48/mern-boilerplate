@@ -39,6 +39,12 @@ To Check and validate this, we have complexity report that is being checked and 
 - Type `npm run server` to start server side in development mode @ localhost:8000
 - Type `npm run cronjob` to start server side cronjob independently
 
+#### <u>For Admin Dashboard</u>
+- Setup your database configuration in .env file, Check .env.example file.
+- Type `npm run admin:migrate` to run the admin side migrations.
+- Type `npm run server` to start the backend server.
+- Type `npm run admin` to start the admin template.
+
 ## <u>Enviornment Variables</u>
 Initialise `.envs` in the respective directories `(./client)` and make sure to copy `.env.example` for all the required variables. If you add a new variable at any time, make sure to add it in the `.env.example` with a dummy value.
 
