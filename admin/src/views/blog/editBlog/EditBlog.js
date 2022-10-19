@@ -42,7 +42,6 @@ const EditBlogForm = () => {
   const {
     blogDetailLoading,
     blogDetailData,
-    blogDetailError,
     updateBlogLoading,
     updateBlogData,
     updateBlogError,
@@ -61,6 +60,7 @@ const EditBlogForm = () => {
   }, [blogDetailData]);
 
   useEffect(() => {
+    if(!id || !dispatch) return;
     if (updateBlogData?.statusCode === 200) {
       dispatch(blogDetailAction({ id }));
       setTimeout(() => dispatch(updateBlogResetAction()), 5000);

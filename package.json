@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "setup": "find . -maxdepth 1 -type d \\( ! -name . \\) -exec bash -c \"cd '{}' && npm ci\" \\;",
     "client": "cd client && npm run start && cd ..",
     "server": "cd server && npm run develop && cd ..",
-    "admin": "cd admin && npm start",
+    "admin": "cd admin && npm run start",
     "admin:migrate": "cd server/admin && npx sequelize-cli db:migrate",
     "cronjob": "cd server/cron && node cronjob"
   },

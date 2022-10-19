@@ -13,7 +13,6 @@
     "axios-mock-adapter": "~1.17.0",
     "babel-plugin-react-intl": "^5.1.18",
     "bootstrap": "^4.4.1",
-    "chart.js": "^2.9.3",
     "chroma-js": "~2.1.0",
     "classnames": "~2.2.6",
     "draft-js": "^0.11.4",
@@ -40,7 +39,6 @@
     "react-beautiful-dnd": "^12.2.0",
     "react-big-calendar": "^0.24.0",
     "react-bootstrap-sweetalert": "^5.1.9",
-    "react-chartjs": "^1.2.0",
     "react-chartjs-2": "^2.9.0",
     "react-contexify": "~4.1.1",
     "react-copy-to-clipboard": "~5.0.2",
@@ -77,15 +75,13 @@
     "redux": "^4.0.5",
     "redux-debounced": "~0.5.0",
     "redux-thunk": "~2.3.0",
-    "styled-components": "^5.0.1",
     "swiper": "^5.3.0",
     "xlsx": "^0.15.5",
-    "yarn": "^1.21.1",
     "yup": "^0.28.1"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "start": "react-app-rewired --max_old_space_size=4096 start",
+    "build": "react-app-rewired --max_old_space_size=4096 build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"
   },
@@ -93,9 +89,11 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "node-sass": "^4.13.1",
+    "chart.js": "^3.9.1",
     "react-app-rewire-postcss": "^3.0.2",
-    "react-app-rewired": "^2.1.5"
+    "react-app-rewired": "^2.1.5",
+    "sass": "1.32.0",
+    "styled-components": "^5.3.6"
   },
   "browserslist": {
     "production": [
