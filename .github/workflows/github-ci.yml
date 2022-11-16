@@ -1,44 +1,54 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
+ 
 name: Invoswift-Mern CI
-
+ 
 on: [pull_request]
-
+env:
+  SERVER_URL: "http://localhost:5000"
+  PRIVATE_KEY: "./certs/privateKey.pem"
+  PUBLIC_KEY: "./certs/publicKey.cer"
+  DB_USERNAME: "ijmhkhjflgrqdw"
+  DB_PASSWORD: "7a7cc4b10af87642c9a45294eefe0fc7c55eb63331a1bb9d7ba3a166c357c166"
+  DB_NAME: "d4nlpc9ump57v9"
+  DB_PORT: "5432"
+  DIALECT: "postgres"
+  DB_HOST: 'ec2-44-209-57-4.compute-1.amazonaws.com'
+   
 jobs:
-  root:
-    name: Invoswift-mern-jobs
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.10.0]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-      - name: Root install Step
-        id: root_installs
-        uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - run: npm i -g yarn
-      - run: npm i
-
-      - name: Server Step
-        id: server_installs
-        run: echo "Server Step"
-      - run: cd ./server && pwd && npm i
-
-      - name: Client Step
-        id: client_installs
-        run: echo "Client Step"
-      - run: cd ./client && pwd && npm i
-      - run: cd ./client && pwd && npm run build
-
-      - name: Admin template Step
-        id: admin_installs
-        run: echo "Admin Template Step"
-      - run: cd ./admin && pwd && yarn
-      - run: cd ./admin && pwd && CI= true yarn build --verbose
+ root:
+   name: Invoswift-mern-jobs
+   runs-on: ubuntu-latest
+ 
+   strategy:
+     matrix:
+       node-version: [16.10.0]
+   steps:
+     - name: Root install Step
+       id: root_installs
+       uses: actions/checkout@v3
+     - uses: actions/setup-node@v3
+       with:
+         node-version: ${{ matrix.node-version }}
+     - run: npm i -g yarn
+     - run: npm i
+     - name: Server Step
+       id: server_installs
+       run: echo "Server Step"
+     - run: cd ./server && pwd && npm i
+     - run: cd ./server && pwd && npm run test
+     - run: npm run admin:migrate
+     - run: npm run admin:undo-migrate
+ 
+     - name: Client Step
+       id: client_installs
+       run: echo "Client Step"
+     - run: cd ./client && pwd && npm i
+     - run: cd ./client && pwd && npm run build
+ 
+     - name: Admin template Step
+       id: admin_installs
+       run: echo "Admin Template Step"
+     - run: cd ./admin && pwd && yarn
+     - run: cd ./admin && pwd && CI= true yarn build --verbosels
+    

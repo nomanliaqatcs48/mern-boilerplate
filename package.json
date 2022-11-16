@@ -7,7 +7,8 @@
     "client": "cd client && npm run start && cd ..",
     "server": "cd server && npm run develop && cd ..",
     "admin": "cd admin && npm run start",
-    "admin:migrate": "cd server/admin && npx sequelize-cli db:migrate",
+    "admin:migrate": "cd ./server && pwd && cd ./admin && pwd && npx sequelize-cli db:migrate",
+    "admin:undo-migrate": "cd ./server && pwd && cd ./admin && pwd && npx sequelize-cli db:migrate:undo:all",
     "cronjob": "cd server/cron && node cronjob"
   },
   "repository": {
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/InvoZone/InvoPlate-MERN#readme",
   "devDependencies": {
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "supertest": "^6.3.0"
   }
 }
