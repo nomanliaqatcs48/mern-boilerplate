@@ -1,19 +1,13 @@
 require('dotenv').config({ path: `${__dirname}/../../.env` });
- 
+
 module.exports = {
  development: {
    username: process.env.DB_USERNAME || 'invoswift',
    password: process.env.DB_PASSWORD || 'invoswift',
    database: process.env.DB_NAME || 'invoswift',
    host: process.env.DB_HOST || '127.0.0.1',
-   port: process.env.DB_PORT || 5432,
+   port: process.env.DB_PORT || 5434,
    dialect: process.env.DIALECT || 'postgres',
-   dialectOptions: {
-     ssl: {
-       require: true,
-       rejectUnauthorized: false,
-     },
-   },
  },
  test: {
    username: process.env.DB_USERNAME || 'invoswift',
@@ -31,5 +25,4 @@ module.exports = {
    port: process.env.DB_PORT,
    dialect: process.env.DIALECT,
  },
-};
- 
+}; 

@@ -25,5 +25,9 @@
   "devDependencies": {
     "husky": "^8.0.0",
     "supertest": "^6.3.0"
+  },
+  "dependencies": {
+    "pg": "^8.8.0"
   }
 }
+                     
