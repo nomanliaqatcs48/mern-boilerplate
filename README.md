@@ -12,7 +12,7 @@ Updated: `Thursday 18 Aug, 2022`
 Template was built using the following verions and would recommend using the same or higher for best compatibility and support. 
 - Node: 14.17.5
 - NPM: 8.5.0
-- It is preferred to use Node version from 14-16, version can be switched with "nvm use 14" to switch to node version to 14 i.e if you have NVM installed and multiple version of node installed that you want to install
+- It is preferred to use Node version from 14-16, version can be switched with "nvm use 14" to switch to node version to 14 i.e if you have NVM installed and multiple version of node installed that you want to use
 ## <u>Git Practices</u>
 To Initialize Custom Commit and Branch checks. Please Run the following commands while in the current directory
 
@@ -46,7 +46,7 @@ To Check and validate this, we have complexity report that is being checked and 
 
 #### <u>For Admin Dashboard</u>
 - Setup your database configuration in .env file, Check .env.example file.
-- Type `npm run admin:migrate` to run the admin side migrations.
+- Type `npm run admin:migrate` to run the admin side migrations which can be found in server/admin directory.
 - Type `npm run admin:undo-migrate` to undo the admin side migrations.
 - Type `npm run server` to start the backend server.
 - Type `npm run admin` to start the admin template.
