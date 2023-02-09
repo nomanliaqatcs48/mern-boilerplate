@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const auth = require('@invozone/nodejs-jwt-auth/app');
 const requestLogs = require('./middleware/request');
 
 const exampleMiddleware = require('./middleware/example');
