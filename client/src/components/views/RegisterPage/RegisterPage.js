@@ -36,13 +36,13 @@ function RegisterPage(props) {
     <Formik
       initialValues={{
         email: '',
+        firstName: '',
         lastName: '',
-        name: '',
         password: '',
         confirmPassword: '',
       }}
       validationSchema={Yup.object().shape({
-        name: Yup.string().required('Name is required'),
+        firstName: Yup.string().required('Name is required'),
         lastName: Yup.string().required('Last Name is required'),
         email: Yup.string()
           .email('Email is invalid')
@@ -59,8 +59,8 @@ function RegisterPage(props) {
           const dataToSubmit = {
             email: values.email,
             password: values.password,
-            name: values.name,
-            lastname: values.lastname,
+            firstName: values.firstName,
+            lastName: values.lastName,
             image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
           };
 
@@ -96,22 +96,22 @@ function RegisterPage(props) {
               {...formItemLayout}
               onSubmit={handleSubmit}
             >
-              <Form.Item required label='Name'>
+              <Form.Item required label='First Name'>
                 <Input
-                  id='name'
-                  placeholder='Enter your name'
+                  id='firstName'
+                  placeholder='Enter your firstName'
                   type='text'
-                  value={values.name}
+                  value={values.firstName}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={
-                    errors.name && touched.name
+                    errors.firstName && touched.firstName
                       ? 'text-input error'
                       : 'text-input'
                   }
                 />
-                {errors.name && touched.name && (
-                  <div className='input-feedback'>{errors.name}</div>
+                {errors.firstName && touched.firstName && (
+                  <div className='input-feedback'>{errors.firstName}</div>
                 )}
               </Form.Item>
 

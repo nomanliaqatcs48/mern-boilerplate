@@ -1,7 +1,7 @@
 const { Op } = require('sequelize');
 const multer = require('multer');
 const fs = require('fs');
-const { Blog, Page } = require('../models');
+const { Blog, Page } = require('../../models');
 const { verifyBodyParams, generateSlug } = require('../helpers');
 
 const blogImgStorage = multer.diskStorage({

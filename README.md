@@ -12,7 +12,7 @@ Updated: `Thursday 18 Aug, 2022`
 Template was built using the following verions and would recommend using the same or higher for best compatibility and support. 
 - Node: 14.17.5
 - NPM: 8.5.0
-
+- It is preferred to use Node version from 14-16, version can be switched with "nvm use 14" to switch to node version to 14 i.e if you have NVM installed and multiple version of node installed that you want to use
 ## <u>Git Practices</u>
 To Initialize Custom Commit and Branch checks. Please Run the following commands while in the current directory
 
@@ -34,14 +34,20 @@ The amount of memory space used by an algorithm/program including the space of i
 To Check and validate this, we have complexity report that is being checked and generated on each commit. You may check `server/complexity-report.md`. This currently is not restricting for complexitylevel. However, we can set it by changing `server/.compexrc` 
 
 ## <u>Project Configuration Instructions</u>
-- Type `npm run setup` to install all packages for client, server, and admin
+- Type `npm run server:install` to install dependencies for server
+- Type `npm run client:install` to install dependencies for client
+- Type `npm run admin:install` to install dependencies for admin
+- Type `npm run automation:install` to install dependencies for automation
 - Type `npm run client` to start client side in development mode @ localhost:3000
+- Type `npm run admin` to start admin side in development mode @ localhost:3000
 - Type `npm run server` to start server side in development mode @ localhost:8000
+- Type `npm run automation` to run automations in headless mode
 - Type `npm run cronjob` to start server side cronjob independently
 
 #### <u>For Admin Dashboard</u>
 - Setup your database configuration in .env file, Check .env.example file.
-- Type `npm run admin:migrate` to run the admin side migrations.
+- Type `npm run admin:migrate` to run the admin side migrations which can be found in server/admin directory.
+- Type `npm run admin:undo-migrate` to undo the admin side migrations.
 - Type `npm run server` to start the backend server.
 - Type `npm run admin` to start the admin template.
 

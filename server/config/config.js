@@ -2,11 +2,11 @@ require('dotenv').config({ path: `${__dirname}/../../.env` });
 
 module.exports = {
  development: {
-   username: process.env.DB_USERNAME || 'invoswift',
+   username: process.env.DB_USERNAME || 'postgres',
    password: process.env.DB_PASSWORD || 'invoswift',
    database: process.env.DB_NAME || 'invoswift',
    host: process.env.DB_HOST || '127.0.0.1',
-   port: process.env.DB_PORT || 5434,
+   port: process.env.DB_PORT || 5432,
    dialect: process.env.DIALECT || 'postgres',
  },
  test: {
