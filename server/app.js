@@ -28,7 +28,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin/uploads', express.static(`${__dirname}/admin/uploads/`));
 app.use('/', indexRouter);
-app.use('/auth', auth);
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
 
