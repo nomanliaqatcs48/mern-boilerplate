@@ -26,7 +26,6 @@ module.exports = {
       },
       dob: {
         type: Sequelize.DATE,
-        allowNull: false,
       },
       otp: {
         type: Sequelize.STRING,

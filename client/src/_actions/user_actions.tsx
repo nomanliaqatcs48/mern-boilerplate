@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER } from './types';
-const USER_SERVER = '/api/users';
+const USER_SERVER = process.env.REACT_APP_SERVER_URL;
 
 export const registerUser: Function = (dataToSubmit: Object) => {
   const request = axios

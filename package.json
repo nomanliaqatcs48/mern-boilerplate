@@ -12,8 +12,8 @@
     "server": "cd server && npm run develop && cd ..",
     "automation": "cd automation && npx cypress run  && cd ..",
     "admin": "cd admin && npm run start && cd ..",
-    "admin:migrate": "cd ./server && pwd && cd ./admin && pwd && npx sequelize-cli db:migrate",
-    "admin:undo-migrate": "cd ./server && pwd && cd ./admin && pwd && npx sequelize-cli db:migrate:undo:all",
+    "admin:migrate": "cd ./server && pwd && npx sequelize-cli db:migrate",
+    "admin:undo-migrate": "cd ./server && pwd  && npx sequelize-cli db:migrate:undo:all",
     "cronjob": "cd server/cron && node cronjob"
   },
   "repository": {
