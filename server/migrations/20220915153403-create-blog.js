@@ -13,7 +13,6 @@ module.exports = {
       },
       slug: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       description: {
         type: Sequelize.TEXT,
@@ -21,11 +20,9 @@ module.exports = {
       },
       image: {
         type: Sequelize.TEXT,
-        allowNull: false,
       },
       status: {
         type: Sequelize.INTEGER,
-        allowNull: false,
       },
       createdAt: {
         allowNull: false,
